@@ -1,73 +1,51 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# HelpAPI
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is a simple API built on [NestJS](https://github.com/nestjs/nest)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+It's an implementation of a relatively simple business case to manage the delivery of Help Pages to users under certain conditions.
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## What you will find
 
-## Installation
+I think this is a pretty good starter, or boilerplate, I've tried to keep things as simple as possible, but there is already most of what you'll need for any API.
 
-```bash
-$ npm install
-```
+I don't like too many folders, nor too many files in folders, so I've taken a few design choices to keep the balance that I like:
+ - on folder per module, with no subfolders
+ - each module folder has the entity, module, controller and service files
+ - dtos of the same module in one file
+ - auth module separate from users module
+ - a separate 'common' folder with decorators, interfaces, guards and enums
 
-## Running the app
+## What it does
 
-```bash
-# development
-$ npm run start
+There are Users and Help Pages.
 
-# watch mode
-$ npm run start:dev
+Users are authenticated via JWT and can be ADMIN or REGULAR.
 
-# production mode
-$ npm run start:prod
-```
+ADMIN users can manage users and make any operation on Help Pages.
 
-## Test
+REGULAR users can be given permissions as VIEWER or EDITOR for each Help Page, those permissions are established in a separate table with a ManyToMany relation with custom properties.
 
-```bash
-# unit tests
-$ npm run test
+REGULAR users that don't have any relation with a Help Page, cant make any operation on the Help Page.
 
-# e2e tests
-$ npm run test:e2e
+Regular users that have a VIEWER relation with a Help Page, can GET the Help Page.
 
-# test coverage
-$ npm run test:cov
-```
+Regular users that have a EDITOR relation with a Help Page, can GET, PATCH and DELETE the Help Page.
 
-## Support
+Permissions are assigned only by ADMIN users.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Roadmap
+- [x] Initial API version
+- [ ] Nuxt frontend
+- [ ] Improve this README.md, add a guide
+- [ ] Clean the code
+- [ ] Unit tests
+- [ ] Add OpenAPI (Swagger) generation
+- [ ] Add Topics module 
+- [ ] Implement Help Page generation from Topics
+- [ ] Implement Help Page version management
 
-## Stay in touch
+## Credits
+I've built this while coding along some tutorials, to learn NestJS.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Thanks [Ariel Weinberger](https://github.com/arielweinberger) and [Rodrigo Rios](https://github.com/rodrigoalejandrorios), for the excellent tutorials.
