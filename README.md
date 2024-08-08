@@ -10,7 +10,7 @@ It's an implementation of a relatively simple business case to manage the delive
 I think this is a pretty good starter, or boilerplate, I've tried to keep things as simple as possible, but there is already most of what you'll need for any API.
 
 I don't like too many folders, nor too many files in folders, so I've taken a few design choices to keep the balance that I like:
- - on folder per module, with no subfolders
+ - one folder per module, with no subfolders
  - each module folder has the entity, module, controller and service files
  - dtos of the same module in one file
  - auth module separate from users module
