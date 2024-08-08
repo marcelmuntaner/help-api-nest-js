@@ -28,16 +28,16 @@ REGULAR users can be given permissions as VIEWER or EDITOR for each Help Page, t
 
 REGULAR users that don't have any relation with a Help Page, cant make any operation on the Help Page.
 
-Regular users that have a VIEWER relation with a Help Page, can GET the Help Page.
+REGULAR users that have a VIEWER relation with a Help Page, can GET the Help Page.
 
-Regular users that have a EDITOR relation with a Help Page, can GET, PATCH and DELETE the Help Page.
+REGULAR users that have an EDITOR relation with a Help Page, can GET, PATCH and DELETE the Help Page.
 
 Permissions are assigned only by ADMIN users.
 
 ## Roadmap
 - [x] Initial API version
 - [ ] Nuxt frontend
-- [ ] Improve this README.md, add a guide
+- [ ] Improve this README.md, add a guide and a Postman collection
 - [ ] Clean the code
 - [ ] Unit tests
 - [ ] Add OpenAPI (Swagger) generation
